@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venues - PlayBook</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="logo">PlayBook</a>
+            <ul class="nav-links">
+                <li><a href="/venues" class="active">Venues</a></li>
+                <li><a href="/activities">Activities</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">User <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/user-login">Login</a></li>
+                        <li><a href="/user-register">Register</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Owner <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/owner-login">Login</a></li>
+                        <li><a href="/owner-register">Register</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Venues Section -->
+    <section class="venues-section">
+        <div class="venues-header">
+            <h1>Sports Venues</h1>
+            <div class="venues-filters">
+                <select class="filter-select">
+                    <option value="">All Sports</option>
+                    <option value="cricket">Cricket</option>
+                    <option value="football">Football</option>
+                    <option value="badminton">Badminton</option>
+                    <option value="basketball">Basketball</option>
+                    <option value="tennis">Tennis</option>
+                    <option value="swimming">Swimming</option>
+                </select>
+                <select class="filter-select">
+                    <option value="">All Locations</option>
+                    <option value="bangalore">Bangalore</option>
+                    <option value="mumbai">Mumbai</option>
+                    <option value="delhi">Delhi</option>
+                    <option value="hyderabad">Hyderabad</option>
+                </select>
+                <button class="filter-btn">Filter</button>
+            </div>
+        </div>
+
+        <div class="venues-grid">
+            <!-- Venue Cards will be dynamically loaded here -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About PlayBook</h3>
+                <ul>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                    <li><a href="#terms">Terms & Conditions</a></li>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>For Users</h3>
+                <ul>
+                    <li><a href="/user-login">Login</a></li>
+                    <li><a href="/user-register">Register</a></li>
+                    <li><a href="#help">Help Center</a></li>
+                    <li><a href="#faq">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>For Owners</h3>
+                <ul>
+                    <li><a href="/owner-login">Login</a></li>
+                    <li><a href="/owner-register">Register</a></li>
+                    <li><a href="#list-venue">List Your Venue</a></li>
+                    <li><a href="#owner-help">Owner Support</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 PlayBook. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+    <script src="/js/venues.js"></script>
+</body>
+</html>

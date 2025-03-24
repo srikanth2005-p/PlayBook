@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayBook - Book Sports Venues & Activities</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="logo">PlayBook</a>
+            <ul class="nav-links">
+                <li><a href="venues.html">Venues</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">User <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="user-login.html">Login</a></li>
+                        <li><a href="user-register.html">Register</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Owner <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="owner-login.html">Login</a></li>
+                        <li><a href="owner-register.html">Register</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Find and Book Sports Venues</h1>
+            <p>Discover and book the best sports venues near you</p>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search for venues or activities...">
+                <input type="text" class="search-input" placeholder="Location">
+                <button class="search-btn">Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="categories">
+        <div class="section-title">
+            <h2>Popular Sports Categories</h2>
+            <p>Find venues for your favorite sports</p>
+        </div>
+        <div class="categories-grid">
+            <div class="category-card">
+                <img src="/images/cricket.jpg" alt="Cricket" class="category-img">
+                <div class="category-content">
+                    <h3>Cricket</h3>
+                    <p>Find cricket grounds and nets</p>
+                    <span class="price">From ₹800/hr</span>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="/images/football.jpg" alt="Football" class="category-img">
+                <div class="category-content">
+                    <h3>Football</h3>
+                    <p>Book football turfs and fields</p>
+                    <span class="price">From ₹1200/hr</span>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="/images/badminton.jpg" alt="Badminton" class="category-img">
+                <div class="category-content">
+                    <h3>Badminton</h3>
+                    <p>Indoor and outdoor courts</p>
+                    <span class="price">From ₹400/hr</span>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="/images/basketball.jpg" alt="Basketball" class="category-img">
+                <div class="category-content">
+                    <h3>Basketball</h3>
+                    <p>Professional basketball courts</p>
+                    <span class="price">From ₹600/hr</span>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="/images/tennis.jpg" alt="Tennis" class="category-img">
+                <div class="category-content">
+                    <h3>Tennis</h3>
+                    <p>Clay and hard courts</p>
+                    <span class="price">From ₹800/hr</span>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="/images/swimming.jpg" alt="Swimming" class="category-img">
+                <div class="category-content">
+                    <h3>Swimming</h3>
+                    <p>Olympic-size pools</p>
+                    <span class="price">From ₹300/hr</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <h2>List Your Venue on PlayBook</h2>
+        <p>Reach thousands of sports enthusiasts and grow your business</p>
+        <div class="cta-buttons">
+            <a href="owner-register.html" class="cta-btn primary">Register as Owner</a>
+            <a href="owner-login.html" class="cta-btn secondary">Owner Login</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About PlayBook</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>For Users</h3>
+                <ul>
+                    <li><a href="user-login.html">Login</a></li>
+                    <li><a href="user-register.html">Register</a></li>
+                    <li><a href="help.html">Help Center</a></li>
+                    <li><a href="faq.html">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>For Owners</h3>
+                <ul>
+                    <li><a href="owner-login.html">Login</a></li>
+                    <li><a href="owner-register.html">Register</a></li>
+                    <li><a href="list-venue.html">List Your Venue</a></li>
+                    <li><a href="owner-help.html">Owner Support</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 PlayBook. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

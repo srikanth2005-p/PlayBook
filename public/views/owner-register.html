@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner Registration - PlayBook</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/auth.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .form-step {
+            display: block;
+        }
+        #step2 {
+            display: none;
+        }
+        .auth-container {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .auth-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        .auth-button {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px;
+            background-color: #4A90E2;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        .auth-button.secondary {
+            background-color: #6c757d;
+            margin-right: 1rem;
+        }
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .button-group .auth-button {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body class="auth-page">
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="logo">PlayBook</a>
+            <ul class="nav-links">
+                <li><a href="venues.html">Venues</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1>Register Your Venue</h1>
+                <p>Join PlayBook as a venue owner and start accepting bookings</p>
+            </div>
+            
+            <form id="ownerRegisterForm" enctype="multipart/form-data">
+                <!-- Step 1: Personal Information -->
+                <div class="form-step" id="step1">
+                    <h3>Step 1: Personal Information</h3>
+                    
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" class="form-control" required placeholder="Enter your full name">
+                        <div class="error-message" id="fullNameError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" required placeholder="Enter your email">
+                        <div class="error-message" id="emailError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="form-control" required placeholder="Enter your phone number">
+                        <div class="error-message" id="phoneError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="password-input-container">
+                            <input type="password" id="password" name="password" class="form-control" required placeholder="Create a password">
+                            <button type="button" class="password-toggle" onclick="togglePassword()">
+                                <i class="fas fa-eye-slash" id="passwordToggleIcon"></i>
+                            </button>
+                        </div>
+                        <div class="error-message" id="passwordError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <div class="password-input-container">
+                            <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" required placeholder="Confirm your password">
+                            <button type="button" class="password-toggle" onclick="toggleConfirmPassword()">
+                                <i class="fas fa-eye-slash" id="confirmPasswordToggleIcon"></i>
+                            </button>
+                        </div>
+                        <div class="error-message" id="confirmPasswordError"></div>
+                    </div>
+
+                    <button type="button" class="auth-button" onclick="nextStep()">Next</button>
+                </div>
+
+                <!-- Step 2: Venue Information -->
+                <div class="form-step" id="step2" style="display: none;">
+                    <h3>Step 2: Venue Information</h3>
+                    
+                    <div class="form-group">
+                        <label for="businessName">Business Name</label>
+                        <input type="text" id="businessName" name="businessName" class="form-control" required placeholder="Enter your business name">
+                        <div class="error-message" id="businessNameError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="venueType">Venue Type</label>
+                        <select id="venueType" name="venueType" class="form-control" required>
+                            <option value="">Select venue type</option>
+                            <option value="cricket">Cricket</option>
+                            <option value="football">Football</option>
+                            <option value="basketball">Basketball</option>
+                            <option value="tennis">Tennis</option>
+                            <option value="badminton">Badminton</option>
+                            <option value="swimming">Swimming</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <div class="error-message" id="venueTypeError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Venue Address</label>
+                        <textarea id="address" name="address" class="form-control" required placeholder="Enter your venue's complete address" rows="3"></textarea>
+                        <div class="error-message" id="addressError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="idProof">ID Proof</label>
+                        <input type="file" id="idProof" name="idProof" class="form-control" accept=".jpg,.jpeg,.png,.pdf" required>
+                        <div class="error-message" id="idProofError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="businessProof">Business Proof</label>
+                        <input type="file" id="businessProof" name="businessProof" class="form-control" accept=".jpg,.jpeg,.png,.pdf" required>
+                        <div class="error-message" id="businessProofError"></div>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="button" class="auth-button secondary" onclick="prevStep()">Back</button>
+                        <button type="submit" class="auth-button">Register</button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="auth-footer">
+                <p>Already have an account? <a href="owner-login.html">Sign In</a></p>
+                <p>Looking to book a venue? <a href="user-register.html">Register as User</a></p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleBtn = document.querySelector('.password-toggle');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleBtn.querySelector('i').classList.remove('fa-eye-slash');
+                toggleBtn.querySelector('i').classList.add('fa-eye');
+            } else {
+                passwordInput.type = 'password';
+                toggleBtn.querySelector('i').classList.remove('fa-eye');
+                toggleBtn.querySelector('i').classList.add('fa-eye-slash');
+            }
+        }
+
+        function toggleConfirmPassword() {
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+            const toggleBtn = document.querySelector('.password-toggle');
+            
+            if (confirmPasswordInput.type === 'password') {
+                confirmPasswordInput.type = 'text';
+                toggleBtn.querySelector('i').classList.remove('fa-eye-slash');
+                toggleBtn.querySelector('i').classList.add('fa-eye');
+            } else {
+                confirmPasswordInput.type = 'password';
+                toggleBtn.querySelector('i').classList.remove('fa-eye');
+                toggleBtn.querySelector('i').classList.add('fa-eye-slash');
+            }
+        }
+
+        function nextStep() {
+            // Hide all error messages first
+            const errorElements = document.querySelectorAll('.error-message');
+            errorElements.forEach(element => element.style.display = 'none');
+
+            // Get form values
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            let isValid = true;
+
+            // Validate full name
+            if (!fullName) {
+                showError('fullNameError', 'Please enter your full name');
+                isValid = false;
+            }
+
+            // Validate email
+            if (!email) {
+                showError('emailError', 'Please enter your email');
+                isValid = false;
+            } else if (!validateEmail(email)) {
+                showError('emailError', 'Please enter a valid email address');
+                isValid = false;
+            }
+
+            // Validate phone
+            if (!phone) {
+                showError('phoneError', 'Please enter your phone number');
+                isValid = false;
+            } else if (!validatePhone(phone)) {
+                showError('phoneError', 'Please enter a valid 10-digit phone number');
+                isValid = false;
+            }
+
+            // Validate password
+            if (!password) {
+                showError('passwordError', 'Please enter a password');
+                isValid = false;
+            } else if (!validatePassword(password)) {
+                showError('passwordError', 'Password must be at least 6 characters long');
+                isValid = false;
+            }
+
+            // Validate confirm password
+            if (!confirmPassword) {
+                showError('confirmPasswordError', 'Please confirm your password');
+                isValid = false;
+            } else if (password !== confirmPassword) {
+                showError('confirmPasswordError', 'Passwords do not match');
+                isValid = false;
+            }
+
+            if (isValid) {
+                document.getElementById('step1').style.display = 'none';
+                document.getElementById('step2').style.display = 'block';
+            }
+        }
+
+        function prevStep() {
+            document.getElementById('step2').style.display = 'none';
+            document.getElementById('step1').style.display = 'block';
+        }
+
+        function showError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+
+        function hideError(elementId) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.style.display = 'none';
+        }
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function validatePhone(phone) {
+            const re = /^\d{10}$/;
+            return re.test(phone);
+        }
+
+        function validatePassword(password) {
+            return password.length >= 6;
+        }
+
+        // Handle form submission
+        document.getElementById('ownerRegisterForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Hide all error messages
+            const errorElements = document.querySelectorAll('.error-message');
+            errorElements.forEach(element => element.style.display = 'none');
+
+            // Create FormData object
+            const formData = new FormData(e.target);
+
+            try {
+                const response = await fetch('/api/owners/register', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Registration successful
+                    localStorage.setItem('token', data.token);
+                    window.location.href = '/views/owner-dashboard.html';
+                } else {
+                    // Show error messages
+                    if (data.errors) {
+                        Object.entries(data.errors).forEach(([field, message]) => {
+                            showError(`${field}Error`, message);
+                        });
+                    } else {
+                        showError('businessNameError', data.message || 'Registration failed. Please try again.');
+                    }
+                }
+            } catch (error) {
+                console.error('Registration error:', error);
+                showError('businessNameError', 'An error occurred during registration. Please try again.');
+            }
+        });
+    </script>
+    <script src="/js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .profile-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        .profile-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .profile-details {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container profile-container">
+        <div class="profile-header">
+            <h2>Owner Profile</h2>
+        </div>
+        <div class="profile-details">
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong>Name:</strong> <span id="ownerName"></span></p>
+                    <p><strong>Email:</strong> <span id="ownerEmail"></span></p>
+                    <p><strong>Phone:</strong> <span id="ownerPhone"></span></p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Address:</strong> <span id="ownerAddress"></span></p>
+                    <p><strong>City:</strong> <span id="ownerCity"></span></p>
+                    <p><strong>State:</strong> <span id="ownerState"></span></p>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <button class="btn btn-primary" onclick="window.location.href='/owner-dashboard'">Back to Dashboard</button>
+                <button class="btn btn-danger" onclick="handleSignout()">Sign Out</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Check authentication on page load
+        document.addEventListener('DOMContentLoaded', async () => {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                window.location.href = '/owner-login.html';
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/owner-profile', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch profile');
+                }
+
+                const data = await response.json();
+                
+                // Update profile information
+                document.getElementById('ownerName').textContent = data.name;
+                document.getElementById('ownerEmail').textContent = data.email;
+                document.getElementById('ownerPhone').textContent = data.phone;
+                document.getElementById('ownerAddress').textContent = data.address;
+                document.getElementById('ownerCity').textContent = data.city;
+                document.getElementById('ownerState').textContent = data.state;
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to load profile. Please login again.');
+                window.location.href = '/owner-login.html';
+            }
+        });
+
+        function handleSignout() {
+            fetch('/api/owner-signout', {
+                method: 'POST',
+                credentials: 'include'
+            })
+            .then(response => {
+                if (response.ok) {
+                    localStorage.removeItem('token');
+                    window.location.href = '/owner-login.html';
+                } else {
+                    throw new Error('Signout failed');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to sign out. Please try again.');
+            });
+        }
+    </script>
+</body>
+</html>
